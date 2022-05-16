@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/amallasheen/Documents/GUC/S19/MP2DataSetGenerator/MP2DataGenerator/postgresql-jdbc.jar"/>
+	<classpathentry kind="lib" path="E:/GUC-He15931593/semester 6/Database 2/Project desc/CSEN604-Project/MP2DataGenerator/MP2DataGenerator/postgresql-jdbc.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
