@@ -447,14 +447,15 @@ public class Schema1 {
 		String [] nameString = {"Ahmed","Hossam","Belal","Omar","yehia","Abdo"};
 		//insert the random value of instructors to CSEN department
 		for(; instructorCounter<=randomValue ;instructorCounter++) {
-			if (insertInstructor(instructorCounter,  nameString[random.nextInt(7)]+ instructorCounter, instructorCounter*100, "CSEN", conn) == 0) {
+			if (insertInstructor(instructorCounter,  nameString[random.nextInt(6)]+ instructorCounter, instructorCounter*100, "CSEN", conn) == 0) {
 				System.err.println("insertion of record " + instructorCounter + " failed");}
 		     else System.out.println("insertion was successful");
 		}
 		idCSEN=instructorCounter;
 		for (int j=1;  j < 60; j++) {
-			for(int k=1;k<=instructorCounter;k++,instructorCounter++) {
-				if (insertInstructor(instructorCounter, nameString[random.nextInt(7)] + instructorCounter, instructorCounter*100, "CS" + j, conn) == 0) {
+			randomValue=random.nextInt(26)+10;
+			for(int k=1;k<=randomValue;k++,instructorCounter++) {
+				if (insertInstructor(instructorCounter, nameString[random.nextInt(6)] + instructorCounter, instructorCounter*100, "CS" + j, conn) == 0) {
 					System.err.println("insertion of record " + instructorCounter + " failed");
 					
 					break;
@@ -468,7 +469,7 @@ public class Schema1 {
 	}
 
 	public static void populateClassroom(Connection conn) {
-		for (int i = 1; i < 10000; i++) {
+		for (int i = 1; i < 1300; i++) {
 			if (insertClassroom(i, i, 100 + i, conn) == 0) {
 				System.err.println("insertion of record " + i + " failed");
 				break;
@@ -495,13 +496,14 @@ public class Schema1 {
 		String [] nameString = {"Ahmed","Hossam","Belal","Omar","yehia","Abdo"};
 		for(; studentCounter<=randomValue ;studentCounter++) {
 			
-			if (insertStudent(studentCounter, nameString[random.nextInt(7)] + studentCounter, studentCounter*5, "CSEN", random.nextInt(idCSEN-1)+1, conn) == 0) {
+			if (insertStudent(studentCounter, nameString[random.nextInt(6)] + studentCounter, studentCounter*5, "CSEN", random.nextInt(idCSEN-1)+1, conn) == 0) {
 				System.err.println("insertion of record " + studentCounter + " failed");
 		}
 		}
 		for (int j=1;  j < 60; j++) {
+		    randomValue=random.nextInt(2101)+1100;
 			for(int k=1;k<=randomValue;k++,studentCounter++) {
-				if (insertStudent(studentCounter, nameString[random.nextInt(7)] + studentCounter, studentCounter*5, "CS"+j, random.nextInt(instructorCounter-1)+idCSEN+1, conn) == 0) {
+				if (insertStudent(studentCounter, nameString[random.nextInt(6)] + studentCounter, studentCounter*5, "CS"+j, random.nextInt(instructorCounter-idCSEN-1)+1+idCSEN, conn) == 0) {
 					System.err.println("insertion of record " + studentCounter + " failed");
 					
 					break;
@@ -550,20 +552,22 @@ public class Schema1 {
 
 	public static void populateSection(Connection conn) {
 		int j = 1;
-		
-		for ( sectionCounter = 1; sectionCounter <= 500 ; sectionCounter++) {
-			if (insertSection(sectionCounter, 1, 2019, random.nextInt(instructorCounter-1)+1, random.nextInt(courseCounter-1)+1, j, j, conn) == 0) {
+		sectionCounter=1;
+		for (int i=0;i<4 ;i++) {
+		  for ( ; sectionCounter <= 300*(i+1) ; sectionCounter++) {
+			if (insertSection(sectionCounter, 1, 2019+i, random.nextInt(instructorCounter-1)+1, random.nextInt(courseCounter-1)+1, j, j, conn) == 0) {
 				System.err.println("insertion of record " + sectionCounter + " failed");
 				break;
 			} else
 				System.out.println("insertion was successful");
 			j++;
 		}
+		}
 	}
 
 	public static void populateTakes(Connection conn) {
 		double j = 0.7;
-		for (int i = 1; i <= 500; i++) {
+		for (int i = 1; i <= 1200; i++) {
 			if (j == 5)
 				j = 0.7;
 			if (insertTakes(random.nextInt(studentCounter-1)+1, i, j, conn) == 0) {
@@ -576,7 +580,7 @@ public class Schema1 {
 	}
 
 	public static void populateSectionTime(Connection conn) {
-		for (int i = 1; i <= 500; i++) {
+		for (int i = 1; i <= 1200; i++) {
 			if (insertSectionTime(i, i, conn) == 0) {
 				System.err.println("insertion of record " + i + " failed");
 				break;
