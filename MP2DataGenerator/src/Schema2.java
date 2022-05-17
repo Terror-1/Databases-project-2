@@ -366,7 +366,7 @@ public class Schema2 {
 
 			connection = DriverManager.getConnection(
 					"jdbc:postgresql://127.0.0.1:5432/schema2", "postgres",
-					"159");
+					"YOUR PASSWORD");
             insertSchema2(connection);
 			
 
