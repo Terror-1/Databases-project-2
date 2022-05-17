@@ -5,9 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 
 
 public class Schema2 {
+	static Random random = new Random();
 	
 //	CREATE TABLE Employee(Fname CHAR(20), Minit CHAR(10), Lname CHAR(20), ssn INT PRIMARY KEY, Bdate date, address CHAR(20), sex CHARACTER(1), salary INT, Super_snn INT REFERENCES Employee(ssn), dno INT);
 
@@ -262,35 +264,85 @@ public class Schema2 {
 	 /////////////////////////////////////////////// Data Population Methods //////////////////////////////////////////////////////////////
 	 @SuppressWarnings("deprecation")
 	public static void populateEmployee(Connection conn) {
-		 for (int i = 1; i < 10000; i++) {
-                String result = "M";
-                if (i > 5000) 
-                	result = "F";
-				if (insertEmployee("Employee" + i, "M" + i,"Employee" + i, i, new Date(22,1,1999), "address" + i ,result,i,i,i, conn) == 0) {
-					System.err.println("insertion of record " + i + " failed");
-					break;
+		 int empid=1;
+		 String[] arr= {"M","F"};
+		 // insert emp1 with sal 40k in dep5
+		 if (insertEmployee("employee" + empid, "M" + empid,"employee" + empid, empid, new Date(22,1,1999), "address" + empid ,"M",40000,empid,5, conn) == 0) {
+				System.err.println("insertion of record " + 1 + " failed");
+				
+			} else {
+				System.out.println("insertion was successful");
+				empid++;
+				}
+		 		
+		 for(int j=1; j<=100 ; j++,empid++) {
+			 //insert in dep 5 100 emp with sal less than 40k
+			 if (insertEmployee("employee" + empid, "M" + empid,"employee" + empid, empid, new Date(22,1,1999), "address" + empid ,empid<=1000?"M":arr[random.nextInt(2)],random.nextInt(5000)+35000,empid,5, conn) == 0) {
+					System.err.println("insertion of record " + 1 + " failed");
+					//empid++;
 				} else
 					System.out.println("insertion was successful");
-			}
-		 int i = 10000;
-			insertEmployee("Employee" + i, "M" + i,"Employee" + i, i, new Date(22,1,1999), "address" + i ,"M",i,i,1, conn);
-          i++;
-			insertEmployee("Employee" + i, "M" + i,"Employee" + i, i, new Date(22,1,1999), "address" + i ,"M",i,i,1, conn);
+		 }
+		 //insert in dep from 1 to 100 except 5 90 emp with sal less than 40k and rest with more than 40k
+		 for(int i=1; i<=100; i++) {
+			 if(i==5) continue;
+			 for(int j=1; j<=90;j++,empid++) {
+				 
+				 if (insertEmployee("employee" + empid, "M" + empid,"employee" + empid, empid, new Date(22,1,1999), "address" + empid ,empid<=1000?"M":arr[random.nextInt(2)],random.nextInt(30001)+4000,empid,i, conn) == 0) {
+						System.err.println("insertion of record " + 1 + " failed");
+						break;
+					} else
+						System.out.println("insertion was successful");
+			 }
+			 for(int j=1; j<=10;j++,empid++) {
+
+				 if (insertEmployee("employee" + empid, "M" + empid,"employee" + empid, empid, new Date(22,1,1999), "address" + empid ,empid<=1000?"M":arr[random.nextInt(2)],random.nextInt(10001)+40000,empid,i, conn) == 0) {
+					 System.err.println("insertion of record " + 1 + " failed");
+					 break;
+				 } else
+					 System.out.println("insertion was successful");
+			 }
+		 }
+		 
+		 //insert rest of employees in the remaining dep with sal less than 40k
+		 for(int k=101;k<=150;k++) {
+			 System.err.println("haha"+k);
+			 for (int i = 1; empid <= 16000 && i<=120; i++,empid++) {
+				 
+				 if (insertEmployee("employee" + empid, "M" + empid,"employee" + empid, empid, new Date(22,1,1999), "address" + empid ,arr[random.nextInt(2)],random.nextInt(5001)+10000,empid,k, conn) == 0) {
+					 System.err.println("insertion of record " + 1 + " failed");
+					 break;
+				 } else
+					 System.out.println("insertion was successful");
+			 }
+		 }
+//		 int i = 10000;
+//			insertEmployee("Employee" + i, "M" + i,"Employee" + i, i, new Date(22,1,1999), "address" + i ,"M",i,i,1, conn);
+//          i++;
+//			insertEmployee("Employee" + i, "M" + i,"Employee" + i, i, new Date(22,1,1999), "address" + i ,"M",i,i,1, conn);
 
 	 }
 	 
 	 @SuppressWarnings("deprecation")
 	public static void populateDepartment(Connection conn) {
-		 for (int i = 1; i < 10000; i++) {
-				if (insertDepartment("Department" + i, i,i,new Date(1,1,1990), conn) == 0) {
-					System.err.println("insertion of record " + i + " failed");
+		 int depId=1;
+		 for(int i=1; i<=8;i++,depId++) {
+			 if (insertDepartment("Department" + depId, depId,1,new Date(1,1,1990), conn) == 0) {
+					System.err.println("insertion of record " + depId + " failed");
+					break;
+				} else
+					System.out.println("insertion was successful");
+		 }
+		 for (int i = 2; i <= 143 && depId<=150; i++,depId++) {
+				if (insertDepartment("Department" + depId, depId,i,new Date(1,1,1990), conn) == 0) {
+					System.err.println("insertion of record " + depId + " failed");
 					break;
 				} else
 					System.out.println("insertion was successful");
 			}
 	 }
 		public static void populateDeptLocations(Connection conn) {
-			 for (int i = 1; i < 10000; i++) {
+			 for (int i = 1; i <= 150; i++) {
 					if (insertDeptLocations(i, "Location" + i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
 						break;
@@ -300,30 +352,54 @@ public class Schema2 {
 		 }
 		
 		public static void populateProject(Connection conn) {
-			 for (int i = 1; i < 10000; i++) {
-					if (insertProject("Project" + i, i,"Location1" + i,i, conn) == 0) {
-						System.err.println("insertion of record " + i + " failed");
+			int pnum=1;
+			for (int i = 1; i <= 150; i++) {
+				 for(int j=1;j<=61;pnum++,j++) {
+					if (insertProject("Project" + pnum, pnum,"Location1" + pnum,i, conn) == 0) {
+						System.err.println("insertion of record " + pnum + " failed");
 						break;
 					} else
 						System.out.println("insertion was successful");
 				}
+			 }
+			for(;pnum<=9200;pnum++) {
+				if (insertProject("Project" + pnum, pnum,"Location1" + pnum,random.nextInt(150)+1, conn) == 0) {
+					System.err.println("insertion of record " + pnum + " failed");
+					break;
+				} else
+					System.out.println("insertion was successful");
+			}
 		 }
 		public static void populateWorksOn(Connection conn) {
-			 for (int i = 1; i < 10000; i++) {
-					if (insertWorksOn(i, i, i, conn) == 0) {
+			int pnum=1;
+			 for (int i = 1; i <= 224; i++,pnum++) {
+					if (insertWorksOn(1, i, i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
 						break;
 					} else
 						System.out.println("insertion was successful");
 				}
+			 for(;pnum<=9200;pnum++) {
+				 if (insertWorksOn(random.nextInt(15999)+2, pnum, pnum, conn) == 0) {
+						System.err.println("insertion of record " + pnum + " failed");
+						break;
+					} else
+						System.out.println("insertion was successful");
+			 }
 		 }
 		@SuppressWarnings("deprecation")
 		public static void populateDependent(Connection conn) {
-			 for (int i = 1; i < 10000; i++) {
-				 String result = "F";
-				 if (i > 5000) 
-					 result = "M";
-					if (insertDependent(i, "Name" + i, result,new Date(1,1,1999),"child", conn) == 0) {
+			int dependentid=1;
+			String arr[]= {"M","F"};
+			 for (int i = 1; i <= 1000; i++,dependentid++) {
+					if (insertDependent(i, "employee" + i, "M",new Date(1,1,1999),"child", conn) == 0) {
+						System.err.println("insertion of record " + i + " failed");
+						break;
+					} else
+						System.out.println("insertion was successful");
+				}
+			 for (int i = 1; i <= 1000; i++,dependentid++) {
+					if (insertDependent(dependentid, "name" + dependentid, arr[random.nextInt(2)],new Date(1,1,1999),"child", conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
 						break;
 					} else
