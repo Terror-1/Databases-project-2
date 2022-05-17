@@ -190,7 +190,7 @@ public class Schema3 {
 
 			connection = DriverManager.getConnection(
 					"jdbc:postgresql://127.0.0.1:5432/schema3", "postgres",
-					"YOUR PASSWORD");
+					"159");
 
             insertSchema3(connection);
 		

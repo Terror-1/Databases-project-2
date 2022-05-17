@@ -8,5 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/amallasheen/Documents/GUC/S19/MP2DataSetGenerator/MP2DataGenerator/postgresql-jdbc.jar"/>
 	<classpathentry kind="lib" path="E:/GUC-He15931593/semester 6/Database 2/Project desc/CSEN604-Project/MP2DataGenerator/MP2DataGenerator/postgresql-jdbc.jar"/>
+	<classpathentry kind="lib" path="E:/GUC-He15931593/semester 6/Database 2/Repo/Databases-project-2/MP2DataGenerator/postgresql-jdbc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
