@@ -284,7 +284,7 @@ public class Schema2 {
 					System.out.println("insertion was successful");
 		 }
 		 //insert in dep from 1 to 100 except 5 90 emp with sal less than 40k and rest with more than 40k
-		 for(int i=1; i<=100; i++) {
+		 for(int i=1; i<=101; i++) {
 			 if(i==5) continue;
 			 for(int j=1; j<=90;j++,empid++) {
 				 
@@ -372,20 +372,31 @@ public class Schema2 {
 		 }
 		public static void populateWorksOn(Connection conn) {
 			int pnum=1;
-			 for (int i = 1; i <= 224; i++,pnum++) {
-					if (insertWorksOn(1, i, i, conn) == 0) {
-						System.err.println("insertion of record " + i + " failed");
-						break;
-					} else
-						System.out.println("insertion was successful");
+//			for (int i = 1; i <= 224; i++,pnum++) {
+//				if (insertWorksOn(1, i, i, conn) == 0) {
+//					System.err.println("insertion of record " + i + " failed");
+//					break;
+//				} else
+//					System.out.println("insertion was successful");
+//			}
+			for(;pnum<=9200;pnum++) {
+				if (insertWorksOn(random.nextInt(15999)+2, pnum, pnum, conn) == 0) {
+					System.err.println("insertion of record " + pnum + " failed");
+					break;
+				} else
+					System.out.println("insertion was successful");
+				if(pnum<=1188 && pnum > 488) {
+					while(pnum<=1188 && pnum > 488) {
+						if (insertWorksOn(1, pnum, pnum, conn) == 0) {
+							System.err.println("insertion of record " + pnum + " failed");
+							break;
+						} else {
+							System.out.println("insertion was successful");
+							pnum++;
+						}
+					}
 				}
-			 for(;pnum<=9200;pnum++) {
-				 if (insertWorksOn(random.nextInt(15999)+2, pnum, pnum, conn) == 0) {
-						System.err.println("insertion of record " + pnum + " failed");
-						break;
-					} else
-						System.out.println("insertion was successful");
-			 }
+			}
 		 }
 		@SuppressWarnings("deprecation")
 		public static void populateDependent(Connection conn) {
