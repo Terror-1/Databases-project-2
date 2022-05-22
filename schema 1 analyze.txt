@@ -1,5 +1,6 @@
 CREATE STATISTICS schema1 ON FROM t1;
 
+
 ANALYZE department;
 ANALYZE classroom;
 ANALYZE course;

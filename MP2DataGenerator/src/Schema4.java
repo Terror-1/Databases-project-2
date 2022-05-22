@@ -371,7 +371,22 @@ public class Schema4 {
 	////////////////////////////////////////////////////////// Data Population Methods ////////////////////////////////////////////////////////// 
 	 @SuppressWarnings("deprecation")
 	public static void populateMovie(Connection conn) {
-		 for (int i = 1; i < 10000; i++) {
+		 if (insertMovie(1, "Annie Hall",1977, 120, "EN", new Date(22,1,1977), "US", conn) == 0) {
+				System.err.println("insertion of record " + 1 + " failed");
+				
+			} else
+				System.out.println("insertion was successful");
+		 
+		 for (int i = 2; i < 352; i++) {
+
+				if (insertMovie(i, "WA Movie" + i,i, i, "EN", new Date(22,1,1969), "US", conn) == 0) {
+					System.err.println("insertion of record " + i + " failed");
+					break;
+				} else
+					System.out.println("insertion was successful");
+			}
+		
+		 for (int i = 352; i < 10000; i++) {
 
 				if (insertMovie(i, "Movie" + i,i, i, "EN", new Date(22,1,1999), "US", conn) == 0) {
 					System.err.println("insertion of record " + i + " failed");
@@ -414,9 +429,14 @@ public class Schema4 {
 				}
 		 }
 		public static void populateDirector(Connection conn) {
-			 for (int i = 1; i < 10000; i++) {
+			if (insertDirector(1, "Woody" ,"Allen", conn) == 0) {
+				System.err.println("insertion of record " + 1 + " failed");
+				
+			} else
+				System.out.println("insertion was successful");
+			 for (int i = 2; i < 10000; i++) {
                    
-					if (insertDirector(i, "Actor" + i,"Actor" + i, conn) == 0) {
+					if (insertDirector(i, "Director" + i,"Director" + i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
 						break;
 					} else
@@ -425,7 +445,16 @@ public class Schema4 {
 		 }
 		
 		public static void populateMovieDirection(Connection conn) {
-			 for (int i = 1; i < 10000; i++) {
+			
+			for (int i = 2; i < 351; i++) {
+
+				if (insertMovieDirection(1, i, conn) == 0) {
+					System.err.println("insertion of record " + i + " failed");
+					break;
+				} else
+					System.out.println("insertion was successful");
+			}
+			 for (int i = 352; i < 10000; i++) {
 
 					if (insertMovieDirection(i, i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
@@ -435,7 +464,16 @@ public class Schema4 {
 				}
 		 }
 		public static void populateMovieCast(Connection conn) {
-			 for (int i = 1; i < 10000; i++) {
+			
+			 for (int i = 1; i < 223; i++) {
+                 
+					if (insertMovieCast(i,  1,"Actor" + i, conn) == 0) {
+						System.err.println("insertion of record " + i + " failed");
+						break;
+					} else
+						System.out.println("insertion was successful");
+				}
+			 for (int i = 224; i < 10000; i++) {
                   
 					if (insertMovieCast(i,  i,"Actor" + i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
@@ -505,7 +543,8 @@ public class Schema4 {
 
 			connection = DriverManager.getConnection(
 					"jdbc:postgresql://127.0.0.1:5432/schema4", "postgres",
-					"159");
+					"512002");
+			 
              insertSchema4(connection);
 
 

@@ -1,4 +1,4 @@
-sudo -u postgres psql;
+sudo -U postgres psql;
 
 CREATE DATABASE schema1;
 \c schema1;
