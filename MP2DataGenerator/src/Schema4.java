@@ -5,11 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 
 
 public class Schema4 {
 //	CREATE TABLE Movie(mov_id INT PRIMARY KEY, mov_title CHAR(50), mov_year INT, mov_time INT, mov_lang CHAR(50), mov_dt_rel date, mov_rel_country CHAR(5));
-
+     
 	 public static long insertMovie(int ID, String title,int year, int time, String lang,Date releaseDate, String movieCountry, Connection conn) {
          String SQL = "INSERT INTO Movie(mov_id,mov_title,mov_year,mov_time,mov_lang,mov_dt_rel,mov_rel_country) "
                  + "VALUES(?,?,?,?,?,?,?);";
@@ -377,16 +378,13 @@ public class Schema4 {
 			} else
 				System.out.println("insertion was successful");
 		 
-		 for (int i = 2; i < 352; i++) {
-
-				if (insertMovie(i, "WA Movie" + i,i, i, "EN", new Date(22,1,1969), "US", conn) == 0) {
-					System.err.println("insertion of record " + i + " failed");
-					break;
+		 if (insertMovie(2, "Eyes Wide Shut",1999, 120, "EN", new Date(22,1,1969), "US", conn) == 0) {
+					System.err.println("insertion of record " + 2 + " failed");
 				} else
 					System.out.println("insertion was successful");
-			}
+			
 		
-		 for (int i = 352; i < 10000; i++) {
+		 for (int i = 3; i <= 100000; i++) {
 
 				if (insertMovie(i, "Movie" + i,i, i, "EN", new Date(22,1,1999), "US", conn) == 0) {
 					System.err.println("insertion of record " + i + " failed");
@@ -417,26 +415,37 @@ public class Schema4 {
 				}
 		 }
 		public static void populateActor(Connection conn) {
-			 for (int i = 1; i < 10000; i++) {
-                     String result = "M";
-                     if (i > 5000) 
-                    	 result = "F";
-					if (insertActor(i, "Actor" + i,"Actor" + i,result, conn) == 0) {
-						System.err.println("insertion of record " + i + " failed");
-						break;
-					} else
-						System.out.println("insertion was successful");
-				}
+			Random R = new Random();
+			String [] randomNames = {"Hossam" ,"Azoz","belal","yehia"};
+			String [] randomNames2 = {"SARA" ,"YASMIN","HEND","OLA"};
+			for(int i=1;i<60000;i++) {
+				if (insertActor(i, randomNames[R.nextInt(4)] + i,randomNames[R.nextInt(4)] + i,"M", conn) == 0) {
+					System.err.println("insertion of record " + i + " failed");
+					break;
+				} else
+					System.out.println("insertion was successful");
+			}
+			for(int i=60000;i<=120000;i++) {
+				if (insertActor(i, randomNames2[R.nextInt(4)] + i,randomNames[R.nextInt(4)] + i,"F", conn) == 0) {
+					System.err.println("insertion of record " + i + " failed");
+					break;
+				} else
+					System.out.println("insertion was successful");
+			}
+			
+			
 		 }
 		public static void populateDirector(Connection conn) {
-			if (insertDirector(1, "Woody" ,"Allen", conn) == 0) {
+			Random R = new Random();
+			String [] randomNames = {"Hossam" ,"Azoz","belal","yehia"};
+			if (insertDirector(1, "Woddy" ,"Allen", conn) == 0) {
 				System.err.println("insertion of record " + 1 + " failed");
 				
 			} else
 				System.out.println("insertion was successful");
-			 for (int i = 2; i < 10000; i++) {
+			 for (int i = 2; i <= 6000; i++) {
                    
-					if (insertDirector(i, "Director" + i,"Director" + i, conn) == 0) {
+					if (insertDirector(i, randomNames[R.nextInt(4)] + i,randomNames[R.nextInt(4)] + i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
 						break;
 					} else
@@ -445,8 +454,8 @@ public class Schema4 {
 		 }
 		
 		public static void populateMovieDirection(Connection conn) {
-			
-			for (int i = 2; i < 351; i++) {
+			Random R = new Random();
+			for (int i = 1; i < 500; i++) {
 
 				if (insertMovieDirection(1, i, conn) == 0) {
 					System.err.println("insertion of record " + i + " failed");
@@ -454,9 +463,9 @@ public class Schema4 {
 				} else
 					System.out.println("insertion was successful");
 			}
-			 for (int i = 352; i < 10000; i++) {
+			 for (int i = 500; i <= 100000; i++) {
 
-					if (insertMovieDirection(i, i, conn) == 0) {
+					if (insertMovieDirection(R.nextInt(6000)+1, i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
 						break;
 					} else
@@ -464,8 +473,7 @@ public class Schema4 {
 				}
 		 }
 		public static void populateMovieCast(Connection conn) {
-			
-			 for (int i = 1; i < 223; i++) {
+			for (int i = 1; i <= 500; i++) {
                  
 					if (insertMovieCast(i,  1,"Actor" + i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
@@ -473,15 +481,18 @@ public class Schema4 {
 					} else
 						System.out.println("insertion was successful");
 				}
-			 for (int i = 224; i < 10000; i++) {
+			 for (int i = 5001; i < 100000; i++) {
+               
                   
-					if (insertMovieCast(i,  i,"Actor" + i, conn) == 0) {
+			   if (insertMovieCast(i,  i,"Actor" + i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
 						break;
 					} else
 						System.out.println("insertion was successful");
 				}
-		 }
+	
+			}
+		 
 		
 		public static void populateMovieGenres(Connection conn) {
 			 for (int i = 1; i < 10000; i++) {
