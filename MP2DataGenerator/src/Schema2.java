@@ -268,7 +268,7 @@ public class Schema2 {
 		 String[] arr= {"M","F"};
 		 // insert emp1 with sal 40k in dep5
 		 if (insertEmployee("employee" + empid, "M" + empid,"employee" + empid, empid, new Date(22,1,1999), "address" + empid ,"M",40000,empid,5, conn) == 0) {
-				System.err.println("insertion of record " + 1 + " failed");
+				
 				
 			} else {
 				System.out.println("insertion was successful");

@@ -1,0 +1,3 @@
+btree on department with where clause and btree on section year 
+this is the best plan with cost 1055.43 and exec time 1.41 
+but however postegres favor brin on department

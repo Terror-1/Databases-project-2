@@ -1,0 +1,56 @@
+create statistics s1 on building,room_number,capacity from classroom;
+create statistics s2 on course_id,title,credits,department from course;
+create statistics s3 on dep_name,building,budget from department;
+create statistics s4 on id,name,salary,dep_name from instructor;
+create statistics s5 on course_id,prereq_id from pre_requiste;
+create statistics s6 on section_id,semester,year,instructor_id,course_id,
+classroom_building,classroom_room_no from section;
+create statistics s7 on time_slot,section_id from section_time;
+create statistics s8 on id,name,tot_credit,department,advisor_id from student;
+create statistics s9 on student_id,section_id,grade from takes;
+create statistics s10 on id,day,start,end_time from time_slot;
+
+analyze classroom;
+analyze course;
+analyze department;
+analyze instructor;
+analyze pre_requiste;
+analyze section;
+analyze section_time;
+analyze student;
+analyze takes;
+analyze time_slot;
+
+
+create statistics s1 on fname , lname , ssn,sex ,super_snn ,dno From employee ;
+create statistics s2 on dnumber ,mgr_snn from department;
+create statistics s3 on essn , dependent_name , sex from dependent ;
+create statistics s4 on dnumber , dlocation from dept_locations ;
+create statistics s5 on pname , pnumber , dnumber from project ;
+create statistics s6 on essn , pno  from works_on ;
+
+
+analyze employee ;
+analyze department ;
+analyze dependent ;
+analyze dept_locations;
+analyze project ;
+analyze works_on;
+
+
+
+create statistics on bid ,bname , color from boat ;
+create statistics on sid , bid , day from reserves ;
+create statistics on sid , sname , rating , age from sailors ;
+
+
+
+create statistics on act_id , act_fname , act_lname , acte_gender from actor ;
+create statistics on dir_id , dir_fname , dir_lname from director ;
+create statistics on gen_id , gen_title from geners;
+create statistics on mov_id , mov_title , mov_year , mov_time , mov_lang , mov_dt_rel , mov_rel_country from movie ; 
+create statistics on act_id , mov_id , role from movie_cast ;
+create statistics on dir_id , mov_id from movie_direction;
+create statistics on mov_id , gen_id from movie_genres;
+create statistics on mov_id , rev_id , rev_stars , num_o_rating from rating ;
+create statistics on rev_id , rev_name from reviewer ;
