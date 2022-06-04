@@ -395,7 +395,7 @@ public class Schema4 {
 	 }
 	 
 		public static void populateReviewer(Connection conn) {
-			 for (int i = 1; i < 10000; i++) {
+			 for (int i = 1; i <= 10000; i++) {
 
 					if (insertReviewer(i, "Name" + i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
@@ -405,7 +405,7 @@ public class Schema4 {
 				}
 		 }
 		public static void populateGenres(Connection conn) {
-			 for (int i = 1; i < 10000; i++) {
+			 for (int i = 1; i <= 10000; i++) {
 
 					if (insertGenres(i, "Gnere" + i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
@@ -416,7 +416,7 @@ public class Schema4 {
 		 }
 		public static void populateActor(Connection conn) {
 			Random R = new Random();
-			String [] randomNames = {"Hossam" ,"Azoz","belal","yehia"};
+			String [] randomNames = {"Hossam" ,"Azooz","belal","yehia"};
 			String [] randomNames2 = {"SARA" ,"YASMIN","HEND","OLA"};
 			for(int i=1;i<60000;i++) {
 				if (insertActor(i, randomNames[R.nextInt(4)] + i,randomNames[R.nextInt(4)] + i,"M", conn) == 0) {
@@ -437,25 +437,25 @@ public class Schema4 {
 		 }
 		public static void populateDirector(Connection conn) {
 			Random R = new Random();
-			String [] randomNames = {"Hossam" ,"Azoz","belal","yehia"};
+			String [] randomNames = {"Hossam" ,"Azooz","belal","yehia"};
 			if (insertDirector(1, "Woddy" ,"Allen", conn) == 0) {
 				System.err.println("insertion of record " + 1 + " failed");
 				
 			} else
-				System.out.println("insertion was successful");
-			 for (int i = 2; i <= 6000; i++) {
-                   
-					if (insertDirector(i, randomNames[R.nextInt(4)] + i,randomNames[R.nextInt(4)] + i, conn) == 0) {
-						System.err.println("insertion of record " + i + " failed");
-						break;
-					} else
-						System.out.println("insertion was successful");
-				}
-		 }
+					System.out.println("insertion was successful");
+				 for (int i = 2; i <= 6000; i++) {
+	                   
+						if (insertDirector(i, randomNames[R.nextInt(4)] + i,randomNames[R.nextInt(4)] + i, conn) == 0) {
+							System.err.println("insertion of record " + i + " failed");
+							break;
+						} else
+							System.out.println("insertion was successful");
+					}
+		 }	
 		
 		public static void populateMovieDirection(Connection conn) {
 			Random R = new Random();
-			for (int i = 1; i < 500; i++) {
+			for (int i = 1; i <= 500; i++) {
 
 				if (insertMovieDirection(1, i, conn) == 0) {
 					System.err.println("insertion of record " + i + " failed");
@@ -475,29 +475,40 @@ public class Schema4 {
 		public static void populateMovieCast(Connection conn) {
 			for (int i = 1; i <= 500; i++) {
                  
-					if (insertMovieCast(i,  1,"Actor", conn) == 0) {
+					if (insertMovieCast(i,  1,"Actor" + i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
 						break;
 					} else
 						System.out.println("insertion was successful");
 				}
-			int j=5001;
-			 for (int i = 2; i < 100000; i++) {
-               
+			for(int i=501;i<=1000;i++) {
+				if (insertMovieCast(i,  2,"Actor" + i, conn) == 0) {
+					System.err.println("insertion of record " + i + " failed");
+					break;
+				} else
+					System.out.println("insertion was successful");
+			}
+			int j=3;
+			 for (int i = 1001; i <= 120000; i++) {
+               if(j>100000) {
+            	   j=3;
+               }
                   
-			   if (insertMovieCast(j,  i,"Actor", conn) == 0) {
+			   if (insertMovieCast(i,  j,"Actor" + i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
 						break;
-					} else
+					} else {
 						System.out.println("insertion was successful");
+						j++;
+					}
+			   
 				}
-			    j++;
 	
 			}
 		 
 		
 		public static void populateMovieGenres(Connection conn) {
-			 for (int i = 1; i < 10000; i++) {
+			 for (int i = 1; i <= 10000; i++) {
 
 					if (insertMovieGenres(i, i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
@@ -508,7 +519,7 @@ public class Schema4 {
 		 }
 		
 		public static void populateRating(Connection conn) {
-			 for (int i = 1; i < 10000; i++) {
+			 for (int i = 1; i <= 10000; i++) {
                     
 					if (insertRating(i, i, i,i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");

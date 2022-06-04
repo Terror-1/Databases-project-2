@@ -45,12 +45,18 @@ create statistics on sid , sname , rating , age from sailors ;
 
 
 
-create statistics on act_id , act_fname , act_lname , acte_gender from actor ;
-create statistics on dir_id , dir_fname , dir_lname from director ;
-create statistics on gen_id , gen_title from geners;
-create statistics on mov_id , mov_title , mov_year , mov_time , mov_lang , mov_dt_rel , mov_rel_country from movie ; 
-create statistics on act_id , mov_id , role from movie_cast ;
-create statistics on dir_id , mov_id from movie_direction;
-create statistics on mov_id , gen_id from movie_genres;
-create statistics on mov_id , rev_id , rev_stars , num_o_rating from rating ;
-create statistics on rev_id , rev_name from reviewer ;
+create statistics s1 on act_id , act_fname , act_lname   from actor ;
+create statistics s2 on dir_id , dir_fname , dir_lname from director ;
+create statistics s3 on gen_id , gen_title from genres;
+create statistics s4 on mov_id , mov_title from movie ; 
+create statistics s5 on act_id , mov_id , role from movie_cast ;
+create statistics s6 on dir_id , mov_id from movie_direction;
+create statistics s7 on mov_id , gen_id from movie_genres;
+create statistics s8 on mov_id , rev_id , rev_stars from rating ;
+create statistics s9 on rev_id , rev_name from reviewer ;
+
+analyze actor;
+analyze director;
+analyze movie;
+analyze movie_cast;
+analyze movie_direction;

@@ -1,0 +1,13 @@
+WITH cte_student as(select *
+from student
+where
+department = 'CSEN'),
+cte_section as (
+select *
+from takes t inner join section s
+on t.section_id = s.section_id
+where semester = 1
+and
+year = 2019) 
+
+select * from cte_student full outer join cte_section on cte_student.id = cte_section.student_id
