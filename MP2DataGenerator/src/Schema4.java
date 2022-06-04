@@ -475,21 +475,23 @@ public class Schema4 {
 		public static void populateMovieCast(Connection conn) {
 			for (int i = 1; i <= 500; i++) {
                  
-					if (insertMovieCast(i,  1,"Actor" + i, conn) == 0) {
+					if (insertMovieCast(i,  1,"Actor", conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
 						break;
 					} else
 						System.out.println("insertion was successful");
 				}
-			 for (int i = 5001; i < 100000; i++) {
+			int j=5001;
+			 for (int i = 2; i < 100000; i++) {
                
                   
-			   if (insertMovieCast(i,  i,"Actor" + i, conn) == 0) {
+			   if (insertMovieCast(j,  i,"Actor", conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
 						break;
 					} else
 						System.out.println("insertion was successful");
 				}
+			    j++;
 	
 			}
 		 

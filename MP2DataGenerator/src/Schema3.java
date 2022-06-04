@@ -5,10 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 
 
 public class Schema3 {
-	
+	 static Random random = new Random();
 //	CREATE TABLE Sailors(sid INT PRIMARY KEY, sname CHAR(20), rating INT, age REAL);
 
 
@@ -131,8 +132,11 @@ public class Schema3 {
 	 
 	 ///////////////////////////////////////////////////////// Data Population Methods //////////////////////////////////////////////////////////
 	 public static void populateSailor(Connection conn) {
-		 for (int i = 1; i < 10000; i++) {
-				if (insertSailor(i, "Sailor" + i,i,i, conn) == 0) {
+         int [] rating = {1,2,3,4,5};
+         int [] age = {25,30,33,36,39,42,44,45,50,51,53,56,60};
+
+		 for (int i = 1; i < 19001; i++) {
+				if (insertSailor(i, "Sailor" + i, rating[random.nextInt(4)],age[random.nextInt(12)], conn) == 0) {
 					System.err.println("insertion of record " + i + " failed");
 					break;
 				} else
@@ -140,9 +144,20 @@ public class Schema3 {
 			}
 	 }
 	 public static void populateBoat(Connection conn) {
-		 for (int i = 1; i < 10000; i++) {
-				if (insertBoat(i, "Boat" + i,"Red", conn) == 0) {
-					System.err.println("insertion of record " + i + " failed");
+         
+         String [] boatcolor = {"Red","Green","Blue"};
+         //Just to make sure to add Red and green boats
+        if (insertBoat(1, "Boat" + 1,"Red", conn) == 0) {
+					System.err.println("insertion of record failed");
+				
+				}
+        if (insertBoat(2, "Boat" + 2,"Green", conn) == 0) {
+					System.err.println("insertion of record failed");
+					
+				}
+		 for (int i = 3; i < 3001; i++) {
+				if (insertBoat(i, "Boat" + i,boatcolor[random.nextInt(2)], conn) == 0) {
+					System.err.println("insertion of record" + i + " failed");
 					break;
 				} else
 					System.out.println("insertion was successful");
@@ -150,8 +165,15 @@ public class Schema3 {
 	 }
 	 @SuppressWarnings("deprecation")
 	public static void populateReserves(Connection conn) {
-		 for (int i = 1; i < 10000; i++) {
-				if (insertReserves(i, i,new Date(1,1,1999), conn) == 0) {
+         if (insertReserves(1, 1,new Date(13,7,1999), conn) == 0) {
+					System.err.println("insertion of record failed");
+					
+         }
+          if (insertReserves(1, 2,new Date(13,7,1999), conn) == 0) {
+					System.err.println("insertion of record failed");
+         }
+		 for (int i = 3; i < 35001; i++) {
+				if (insertReserves(random.nextInt(18999)+1, random.nextInt(2999)+1,new Date(13,7,1999), conn) == 0) {
 					System.err.println("insertion of record " + i + " failed");
 					break;
 				} else
