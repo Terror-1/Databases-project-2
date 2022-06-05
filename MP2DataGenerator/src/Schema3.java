@@ -9,7 +9,7 @@ import java.util.Random;
 
 
 public class Schema3 {
-	 static Random random = new Random();
+	static Random random = new Random();
 //	CREATE TABLE Sailors(sid INT PRIMARY KEY, sname CHAR(20), rating INT, age REAL);
 
 
@@ -132,10 +132,10 @@ public class Schema3 {
 	 
 	 ///////////////////////////////////////////////////////// Data Population Methods //////////////////////////////////////////////////////////
 	 public static void populateSailor(Connection conn) {
-         int [] rating = {1,2,3,4,5};
-         int [] age = {25,30,33,36,39,42,44,45,50,51,53,56,60};
+		 int [] rating = {1,2,3,4,5};
+         double [] age = {25,30,33,36,39,42,44,45,50,51,53,56,60};
 
-		 for (int i = 1; i < 19001; i++) {
+		 for (int i = 1; i <= 19000; i++) {
 				if (insertSailor(i, "Sailor" + i, rating[random.nextInt(4)],age[random.nextInt(12)], conn) == 0) {
 					System.err.println("insertion of record " + i + " failed");
 					break;
@@ -144,10 +144,9 @@ public class Schema3 {
 			}
 	 }
 	 public static void populateBoat(Connection conn) {
-         
-         String [] boatcolor = {"Red","Green","Blue"};
+		 String [] boatcolor = {"red","green","blue"};
          //Just to make sure to add Red and green boats
-        if (insertBoat(1, "Boat" + 1,"Red", conn) == 0) {
+        if (insertBoat(1, "Boat"+1,"Red", conn) == 0) {
 					System.err.println("insertion of record failed");
 				
 				}
@@ -155,7 +154,7 @@ public class Schema3 {
 					System.err.println("insertion of record failed");
 					
 				}
-		 for (int i = 3; i < 3001; i++) {
+		 for (int i = 3; i <= 3000; i++) {
 				if (insertBoat(i, "Boat" + i,boatcolor[random.nextInt(2)], conn) == 0) {
 					System.err.println("insertion of record" + i + " failed");
 					break;
@@ -165,20 +164,42 @@ public class Schema3 {
 	 }
 	 @SuppressWarnings("deprecation")
 	public static void populateReserves(Connection conn) {
-         if (insertReserves(1, 1,new Date(13,7,1999), conn) == 0) {
-					System.err.println("insertion of record failed");
-					
-         }
-          if (insertReserves(1, 2,new Date(13,7,1999), conn) == 0) {
-					System.err.println("insertion of record failed");
-         }
-		 for (int i = 3; i < 35001; i++) {
-				if (insertReserves(random.nextInt(18999)+1, random.nextInt(2999)+1,new Date(13,7,1999), conn) == 0) {
+		 for (int i=1 ; i<=1000 ;i++) {
+			 if (insertReserves(i, 103,new Date(13,7,1999), conn) == 0) {
 					System.err.println("insertion of record " + i + " failed");
 					break;
 				} else
 					System.out.println("insertion was successful");
 			}
+		 for (int i=1001 ; i<=2000 ;i++) {
+			 if (insertReserves(i, 1,new Date(13,7,1999), conn) == 0) {
+					System.err.println("insertion of record " + i + " failed");
+					break;
+				} else
+					System.out.println("insertion was successful");
+			}
+		 for (int i=1001 ; i<=2000 ;i++) {
+			 if (insertReserves(i, 2,new Date(13,7,1999), conn) == 0) {
+					System.err.println("insertion of record " + i + " failed");
+					break;
+				} else
+					System.out.println("insertion was successful");
+			}
+		    for (int i = 2001; i <= 19000; i++) {
+				if (insertReserves(i, random.nextInt(2000)+1,new Date(13,7,1999), conn) == 0) {
+					System.err.println("insertion of record " + i + " failed");
+					break;
+				} else
+					System.out.println("insertion was successful");
+			}
+		    for (int i = 3001; i <= 18000; i++) {
+				if (insertReserves(i,(int)Math.floor(Math.random()*(3000-2000+1)+2000) ,new Date(13,7,1999), conn) == 0) {
+					System.err.println("insertion of record " + i + " failed");
+					break;
+				} else
+					System.out.println("insertion was successful");
+			}
+		 
 	 }
 	 public static void insertSchema3(Connection connection) {
 			populateSailor(connection);
@@ -212,7 +233,7 @@ public class Schema3 {
 
 			connection = DriverManager.getConnection(
 					"jdbc:postgresql://127.0.0.1:5432/schema3", "postgres",
-					"159");
+					"YOUR PASSWORD");
 
             insertSchema3(connection);
 		
