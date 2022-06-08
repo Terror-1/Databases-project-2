@@ -455,7 +455,7 @@ public class Schema4 {
 		
 		public static void populateMovieDirection(Connection conn) {
 			Random R = new Random();
-			for (int i = 1; i <= 500; i++) {
+			for (int i = 1; i <= 350; i++) {
 
 				if (insertMovieDirection(1, i, conn) == 0) {
 					System.err.println("insertion of record " + i + " failed");
@@ -463,7 +463,7 @@ public class Schema4 {
 				} else
 					System.out.println("insertion was successful");
 			}
-			 for (int i = 500; i <= 100000; i++) {
+			 for (int i = 351; i <= 100000; i++) {
 
 					if (insertMovieDirection(R.nextInt(6000)+1, i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
@@ -473,7 +473,7 @@ public class Schema4 {
 				}
 		 }
 		public static void populateMovieCast(Connection conn) {
-			for (int i = 1; i <= 500; i++) {
+			for (int i = 1; i <= 222; i++) {
                  
 					if (insertMovieCast(i,  1,"Actor" + i, conn) == 0) {
 						System.err.println("insertion of record " + i + " failed");
@@ -481,7 +481,7 @@ public class Schema4 {
 					} else
 						System.out.println("insertion was successful");
 				}
-			for(int i=501;i<=1000;i++) {
+			for(int i=223;i<=1000;i++) {
 				if (insertMovieCast(i,  2,"Actor" + i, conn) == 0) {
 					System.err.println("insertion of record " + i + " failed");
 					break;

@@ -1,0 +1,7 @@
+select dnumber, count(*) 
+from department, employee 
+where dnumber=dno 
+and 
+salary > 40000 
+group by dnumber
+having count(*)>5; 

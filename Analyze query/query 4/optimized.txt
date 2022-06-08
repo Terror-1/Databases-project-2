@@ -1,0 +1,3 @@
+select e.fname, e.lname 
+from employee e inner join dependent d on e.ssn=d.essn
+where e.fname=d.dependent_name and e.sex=d.sex;

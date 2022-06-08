@@ -1,0 +1,6 @@
+select pnumber 
+from project p inner join department d on p.dnumber=d.dnumber inner join employee e on e.dno=d.dnumber 
+where d.mgr_snn=ssn  and  e.lname='employee1'
+union (select pno 
+ from works_on, employee 
+ where essn=ssn and lname='employee1') ; 

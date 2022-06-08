@@ -268,7 +268,7 @@ public class Schema2 {
 		 String[] arr= {"M","F"};
 		 // insert emp1 with sal 40k in dep5
 		 if (insertEmployee("employee" + empid, "M" + empid,"employee" + empid, empid, new Date(22,1,1999), "address" + empid ,"M",40000,empid,5, conn) == 0) {
-				
+				System.err.println("insertion of record " + 1 + " failed");
 				
 			} else {
 				System.out.println("insertion was successful");
@@ -372,13 +372,6 @@ public class Schema2 {
 		 }
 		public static void populateWorksOn(Connection conn) {
 			int pnum=1;
-//			for (int i = 1; i <= 224; i++,pnum++) {
-//				if (insertWorksOn(1, i, i, conn) == 0) {
-//					System.err.println("insertion of record " + i + " failed");
-//					break;
-//				} else
-//					System.out.println("insertion was successful");
-//			}
 			for(;pnum<=9200;pnum++) {
 				if (insertWorksOn(random.nextInt(15999)+2, pnum, pnum, conn) == 0) {
 					System.err.println("insertion of record " + pnum + " failed");
