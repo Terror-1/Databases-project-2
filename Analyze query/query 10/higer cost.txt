@@ -1,0 +1,2 @@
+select * from actor a inner join movie_cast md on a.act_id = md.act_id inner join movie m on md.mov_id = m.mov_id 
+where mov_title='Annie Hall';

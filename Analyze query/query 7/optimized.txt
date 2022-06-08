@@ -1,0 +1,1 @@
+select s.sname  from sailors s inner join reserves r on s.sid = r.bid where r.bid=103;

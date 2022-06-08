@@ -1,0 +1,10 @@
+Explain analyze
+select * 
+from actor a
+where exists ( 
+select act_id 
+from movie_cast c 
+where exists( 
+select mov_id 
+from movie m
+where mov_title ='Annie Hall' and m.mov_id = c.mov_id) and c.act_id = a.act_id); 
