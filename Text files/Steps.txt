@@ -1,4 +1,4 @@
-First we need to update the statistics using the ANALYZE , VACUM command 
+1First we need to update the statistics using the ANALYZE , VACUM command 
 1) vacuum commad : delete the dead tuples that have been created previously (helpful in case of updated data)
  -----warning :::: dont use vacuum and vacuum full before checking if there is any dead tuples you can check that by running 
          --- > SELECT relname, n_dead_tup FROM pg_stat_user_tables; //know number of dead tuples 
