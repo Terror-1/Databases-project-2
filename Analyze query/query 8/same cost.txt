@@ -1,0 +1,2 @@
+select s.sname from sailors s where
+exists (select r.sid from reserves r inner join boat b on r.bid = b.bid where b.color ='red' and s.sid=r.sid );

@@ -1,0 +1,4 @@
+select mov_title 
+from movie m where exists (select md.mov_id from movie_direction md  where md.dir_id =(select d.dir_id
+from director d
+where dir_fname='Woddy' and dir_lname='Allen')and m.mov_id = md.mov_id);

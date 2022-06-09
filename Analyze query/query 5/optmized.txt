@@ -6,4 +6,4 @@ from employee inner join dependent on ssn = essn ;
 select fname, lname 
 from employee 
 where ssn in  ( select essn
- from dependent );
+ from dependent ); // same cost

@@ -1,0 +1,3 @@
+SELECT S1.sname
+FROM sailors s1, reserves r1, boat b1,reserves r2, boat b2
+WHERE s1.sid=r1.sid AND r1.bid=b1.bid AND s1.sid=r2.sid AND r2.bid=b2.bid AND b1.color='red' AND b2.color='green'

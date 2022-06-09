@@ -1,4 +1,3 @@
-
 select lname, fname 
 from employee 
 where salary > (select max (salary)

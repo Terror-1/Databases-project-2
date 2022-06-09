@@ -1,0 +1,9 @@
+select s1.sname 
+from sailors s1 ,reserves r1 , boat b1 
+WHERE s1.sid=r1.sid AND r1.bid=b1.bid
+and b1.color = 'red'
+Intersect 
+select s2.sname 
+from sailors s2 ,reserves r2 , boat b2 
+WHERE s2.sid=r2.sid AND r2.bid=b2.bid
+and b2.color = 'green'

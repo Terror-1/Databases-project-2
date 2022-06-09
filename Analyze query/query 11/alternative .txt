@@ -1,0 +1,4 @@
+SELECT distinct dir_fname ,dir_lname
+FROM  director NATURAL JOIN movie_direction NATURAL JOIN movie NATURAL JOIN movie_cast
+WHERE role IS  NOT NULL
+AND mov_title='Eyes Wide Shut';
