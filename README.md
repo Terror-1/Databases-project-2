@@ -13,6 +13,8 @@ DataBase 2- (CSEN 604), spring 2022
 
 ### Theme
 The theme of the project is working on postgreSql DBMS and understand the concept of query optmization .
+### used Tools 
+PgAdmin - Psql shell - java - latex
 
 ### Objectives
 - Learn how to read the execution plan of a certain query
