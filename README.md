@@ -1,39 +1,34 @@
-# operating-system(Interpreter)
+# Postgresql DBMS
 
 ## Table of content
 - [Project Description](#project-description)
-- [First phase](#First-phase)
-- [Second phase](#Second-phase)
+- [Steps](#steps)
 
 
 
 ## Project Description
 
 ### Course 
-Operating Systems (CSEN 602), spring 2022
+DataBase 2- (CSEN 604), spring 2022
 
 ### Theme
-The theme of the project, is to understand the concepts of the Operating System  by building
-a processor and then experiment it to see how the OS manages
-resources and processes.
-
-### Overview 
-This project is divided to section , First section is to build an interpreter to translate a text file and call the scheduler to schedule the programs in the text file to the  >>>> CPU .
-second section to implement the memory that stores processes' data .
+The theme of the project is working on postgreSql DBMS and understand the concept of query optmization .
 
 ### Objectives
-- understand the concept of OS
-- Learn the process of the simulation of the processor
-- Learn how to work together as a team on GitHub.
+- Learn how to read the execution plan of a certain query
+- Leran how to inspect the queries and find the columns needed to be indexed .
+- Learn how to optmized queries' performance .
+- understand how PostgreSql works
+- Learn ro deal with pg admin
 
-## First phase
-In the first phase of this project we simulate the OS by building the main component of The CPU :
-- [Scheduler](##Scheduler)
-- [Ready Queue](#Ready-Queue)
-- [Blocked Queue](#Blocked-Queue)
-- [Mutex](#Mutex)
-- [System Calls](#System-Calls)
-- [Code Parser](#Code-Parser)
+
+## Steps
+- [Table creation](##Scheduler)
+- [Insertion modification](#Ready-Queue)
+- [Update table statistics](#Blocked-Queue)
+- [Indexing](#Mutex)
+- [Optmizing](#System-Calls)
+
  
 ### Scheduler 
 we implemented the scheduler with the round robin algorithm where we assign each process a fixed quantum to run and when it finishs its quantum it return back to the ready queue waiting for its time slice and keep rounding untill all the process are finished .
