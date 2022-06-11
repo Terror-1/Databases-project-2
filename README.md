@@ -25,11 +25,11 @@ PgAdmin - Psql shell - java - latex
 
 
 ## Steps
-- [Table_creation](##Table-creation)
-- [Insertion_modification](##Insertion-modification)
-- [Update_table_statistics](##Update-table-statistics)
-- [Indexing](##Indexing)
-- [Optmizing](##Optmizing)
+- [Table_creation](#Table-creation)
+- [Insertion_modification](#Insertion-modification)
+- [Update_table_statistics](#Update-table-statistics)
+- [Indexing](#Indexing)
+- [Optmizing](#Optmizing)
 
 ## Table creation
    first we started the project by running the script that creates the four schemas that will work on them . 
