@@ -25,10 +25,16 @@ PgAdmin - Psql shell - java - latex
 
 
 ## Steps
-- [Table creation](##Scheduler)
-- [Insertion modification](#Ready-Queue)
-- [Update table statistics](#Blocked-Queue)
-- [Indexing](#Mutex)
-- [Optmizing](#System-Calls)
+- [Table creation](##Table creation)
+- [Insertion modification](#Insertion modification)
+- [Update table statistics](#Update table statistics)
+- [Indexing](#Indexing)
+- [Optmizing](#Optmizing)
+
+##Table creation
+#Insertion modification
+#Update table statistics
+#Indexing
+#Optmizing
 
  
