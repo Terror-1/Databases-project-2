@@ -31,12 +31,12 @@ PgAdmin - Psql shell - java - latex
 - [Indexing](#Indexing)
 - [Optmizing](#Optmizing)
 
-##Table creation
+##Table_creation
 first we started the project by running the script that creates the four schemas that will work on them . 
 
-#Insertion modification
+#Insertion_modification
 then we modified the insertion in java that is connected to our postgresql DBengine to make a number of rows sufficient for each query that will help the planner to make a good estimate about how the exection plan will look like
-#Update table statistics 
+#Update_table_statistics 
 Then we update the statistics needed to be collected to enhance the performance using theese commands on each schema `ANALZE` `Create Statistics`
 #Indexing
 Then we inspect the execution plan after running each query to find which column if we make index on it will improve the performance .
