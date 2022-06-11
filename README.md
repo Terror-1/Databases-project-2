@@ -25,9 +25,9 @@ PgAdmin - Psql shell - java - latex
 
 
 ## Steps
-- [Table_creation](##table-creation)
+- [Table_creation](##Table-creation)
 - [Insertion_modification](##Insertion-modification)
-- [Update_table_statistics](##Update-yable-statistics)
+- [Update_table_statistics](##Update-table-statistics)
 - [Indexing](##Indexing)
 - [Optmizing](##Optmizing)
 
