@@ -32,7 +32,7 @@ PgAdmin - Psql shell - java - latex
 - [Optmizing](#Optmizing)
 
 ## Table creation
-   first we started the project by running the script that creates the four schemas that will work on them . 
+   First we started the project by running the script that creates the four schemas that will work on them . 
 
 ## Insertion modification
    then we modified the insertion in java that is connected to our postgresql DBengine to make a number of rows sufficient for each query that will help the planner to make a good estimate about how the exection plan will look like
